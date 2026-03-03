@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom For Head Boy</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration (if needed) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-[#F7F9F9] font-sans text-slate-700 selection:bg-[#D5E6E8]">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="font-bold text-2xl tracking-tight text-[#3D707E]">
+                Tom<span class="text-slate-500 font-light">ForHeadBoy</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <button onclick="scrollToSection('about')" class="hover:text-[#3D707E] transition-colors">About</button>
+                <button onclick="scrollToSection('manifesto')" class="hover:text-[#3D707E] transition-colors">Manifesto</button>
+                <button onclick="scrollToSection('experience')" class="hover:text-[#3D707E] transition-colors">Experience</button>
+                <button 
+                    onclick="scrollToSection('pledge')" 
+                    class="bg-[#3D707E] text-white px-6 py-2.5 rounded-full hover:bg-[#2D545E] transition-all hover:shadow-lg active:scale-95"
+                >
+                    Pledge Support
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-[#3D707E]" onclick="toggleMenu()">
+                <i data-lucide="menu" id="icon-menu" class="w-7 h-7 block"></i>
+                <i data-lucide="x" id="icon-x" class="w-7 h-7 hidden"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-8 px-6 flex-col space-y-5 font-medium border-t border-slate-100 animate-in slide-in-from-top duration-300">
+            <button onclick="scrollToSection('about')" class="text-left text-lg py-2 border-b border-slate-50">About</button>
+            <button onclick="scrollToSection('manifesto')" class="text-left text-lg py-2 border-b border-slate-50">Manifesto</button>
+            <button onclick="scrollToSection('experience')" class="text-left text-lg py-2 border-b border-slate-50">Experience</button>
+            <button onclick="scrollToSection('pledge')" class="bg-[#3D707E] text-white text-center py-4 rounded-2xl mt-4 shadow-md">
+                Pledge to Vote
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-52 lg:pb-40 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-[#EBF2F3] to-transparent -z-10"></div>
+        <div class="absolute top-1/4 left-10 w-64 h-64 bg-[#F2E7E9] rounded-full mix-blend-multiply filter blur-3xl opacity-40 -z-10 animate-pulse"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8 relative z-10">
+                <div class="inline-flex items-center space-x-2 bg-[#E6F0F1] text-[#3D707E] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+                    <i data-lucide="megaphone" class="w-3.5 h-3.5"></i>
+                    <span>Candidate for 2026</span>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-semibold leading-tight text-[#1A2E35]">
+                    A Calm <span class="text-[#3D707E]">Vision</span><br>
+                    for our <span class="text-[#A16F7D]">Future.</span>
+                </h1>
+                <p class="text-lg text-slate-500 max-w-lg leading-relaxed font-light">
+                    I'm Tom, and I'm running for Head Boy to foster a supportive, inclusive, and modern school environment where every student's potential is recognized.
+                </p>
+                <div class="flex flex-wrap gap-5 pt-4">
+                    <button onclick="scrollToSection('pledge')" class="bg-[#3D707E] text-white px-10 py-4 rounded-full font-semibold text-base hover:bg-[#2D545E] transition-all hover:-translate-y-1 shadow-md flex items-center group">
+                        Support Tom <i data-lucide="chevron-right" class="w-4.5 h-4.5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <button onclick="scrollToSection('manifesto')" class="bg-white text-slate-600 border border-slate-200 px-10 py-4 rounded-full font-semibold text-base hover:border-[#3D707E] hover:text-[#3D707E] transition-all">
+                        The Manifesto
+                    </button>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-xl border-[12px] border-white transform rotate-1 hover:rotate-0 transition-transform duration-700">
+                    <img 
+                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Tom on campus" 
+                        class="w-full h-full object-cover"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1A2E35]/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white font-medium text-xl tracking-wide">
+                        Tom [Last Name]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1 relative group">
+                    <div class="rounded-2xl overflow-hidden aspect-square shadow-lg grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
+                        <img 
+                            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                            alt="Tom with peers" 
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-[#A16F7D] text-white p-8 rounded-2xl shadow-lg max-w-xs hidden md:block border-4 border-white">
+                        <p class="font-medium italic leading-relaxed">"True leadership is about creating a space where others feel confident to lead too."</p>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 space-y-8">
+                    <div class="space-y-3">
+                        <h2 class="text-[#A16F7D] font-bold tracking-[0.2em] uppercase text-xs">The Candidate</h2>
+                        <h3 class="text-4xl font-semibold text-[#1A2E35]">A Reliable Choice</h3>
+                    </div>
+                    <div class="space-y-5 text-slate-500 text-lg leading-relaxed font-light">
+                        <p>
+                            As a student here for the past five years, I've experienced the best of our community. I've also recognized where we can grow to meet the challenges of the modern world.
+                        </p>
+                        <p>
+                            Running for Head Boy isn't about status for me. It's about service. I want to use this position to ensure that every student feels their concerns are met with action, not just words.
+                        </p>
+                        <p>
+                            I am committed to transparency, empathy, and a practical approach to making our school the best it can be.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section id="manifesto" class="py-28 bg-[#F2F6F6]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <h2 class="text-[#A16F7D] font-bold tracking-[0.2em] uppercase text-xs mb-3">Commitments</h2>
+                <h3 class="text-4xl font-semibold text-[#1A2E35] mb-6">Core Focus Areas</h3>
+                <div class="h-1 w-20 bg-[#3D707E] mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
+                    <div class="text-[#3D707E] mb-6">
+                        <i data-lucide="users" class="w-10 h-10 stroke-[1.5]"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-[#1A2E35] mb-4">Empowered Council</h4>
+                    <p class="text-slate-500 font-light leading-relaxed">
+                        Transforming the student council into a proactive body that meets directly with senior leadership to implement student-led initiatives.
+                    </p>
+                </div>
+
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
+                    <div class="text-[#A16F7D] mb-6">
+                        <i data-lucide="book-open" class="w-10 h-10 stroke-[1.5]"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-[#1A2E35] mb-4">Wellbeing Spaces</h4>
+                    <p class="text-slate-500 font-light leading-relaxed">
+                        Introducing more 'quiet zones' and social hubs that prioritize mental health, allowing students to recharge during high-pressure exam periods.
+                    </p>
+                </div>
+
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
+                    <div class="text-[#7BA293] mb-6">
+                        <i data-lucide="lightbulb" class="w-10 h-10 stroke-[1.5]"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-[#1A2E35] mb-4">Modern Innovation</h4>
+                    <p class="text-slate-500 font-light leading-relaxed">
+                        Advocating for better digital integration in our learning spaces and sustainable campus practices that reflect our community's values.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-20">
+                <div class="md:w-1/3 space-y-6">
+                    <h2 class="text-[#A16F7D] font-bold tracking-[0.2em] uppercase text-xs">Background</h2>
+                    <h3 class="text-4xl font-semibold text-[#1A2E35]">Experience Matters</h3>
+                    <p class="text-slate-500 text-lg font-light leading-relaxed">
+                        A history of involvement across all aspects of school life, from academics and debate to charity and student representation.
+                    </p>
+                </div>
+                
+                <div class="md:w-2/3 space-y-12">
+                    <div class="flex gap-6 group">
+                        <div class="flex-none w-1 h-20 bg-[#E6F0F1] group-hover:bg-[#3D707E] transition-colors rounded-full"></div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-[#1A2E35]">Senior Debate Captain</h4>
+                            <p class="text-[#3D707E] text-sm font-medium mb-2 tracking-wide">2024 - 2025</p>
+                            <p class="text-slate-500 font-light">Leading the team to regional finals while fostering a welcoming environment for junior members to find their voice.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 group">
+                        <div class="flex-none w-1 h-20 bg-[#F2E7E9] group-hover:bg-[#A16F7D] transition-colors rounded-full"></div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-[#1A2E35]">Student Welfare Rep</h4>
+                            <p class="text-[#A16F7D] text-sm font-medium mb-2 tracking-wide">2023 - 2024</p>
+                            <p class="text-slate-500 font-light">Successfully campaigned for new common room facilities and improved peer-mentoring systems across the secondary school.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 group">
+                        <div class="flex-none w-1 h-20 bg-[#E9F2EF] group-hover:bg-[#7BA293] transition-colors rounded-full"></div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-[#1A2E35]">Eco-Committee Chair</h4>
+                            <p class="text-[#7BA293] text-sm font-medium mb-2 tracking-wide">2023</p>
+                            <p class="text-slate-500 font-light">Initiated the first campus-wide recycling challenge and collaborated with faculty to reduce single-use plastic waste.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Pledge Section - INTEGRATED WITH MAILCHIMP -->
+    <section id="pledge" class="py-28 bg-[#3D707E] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center space-y-10">
+                <div class="space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-semibold">Join the Campaign</h2>
+                    <p class="text-xl text-[#B8CED2] font-light max-w-2xl mx-auto">
+                        Every voice counts. Pledge your support today to stay updated and join the movement.
+                    </p>
+                </div>
+                
+                <!-- MAILCHIMP INTEGRATION FORM -->
+                <form 
+                    action="https://icloud.us12.list-manage.com/subscribe/post?u=db8eb126d047ee138b1f4cf83&amp;id=0a48008276&amp;f_id=00c6e4e8f0" 
+                    method="post" 
+                    id="mc-embedded-subscribe-form" 
+                    name="mc-embedded-subscribe-form" 
+                    target="_blank"
+                    class="max-w-2xl mx-auto space-y-4"
+                >
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input 
+                            name="FNAME"
+                            id="mce-FNAME"
+                            type="text" 
+                            required
+                            placeholder="First Name" 
+                            class="flex-grow px-6 py-4 rounded-full text-slate-800 focus:outline-none focus:ring-4 focus:ring-white/20 transition-all shadow-lg"
+                        >
+                        <input 
+                            name="EMAIL"
+                            id="mce-EMAIL"
+                            type="email" 
+                            required
+                            placeholder="School Email" 
+                            class="flex-grow px-6 py-4 rounded-full text-slate-800 focus:outline-none focus:ring-4 focus:ring-white/20 transition-all shadow-lg"
+                        >
+                    </div>
+
+                    <!-- Anti-spam field (Honeypot) - Required by Mailchimp -->
+                    <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                        <input type="text" name="b_db8eb126d047ee138b1f4cf83_0a48008276" tabindex="-1" value="" readonly>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        name="subscribe"
+                        id="mc-embedded-subscribe"
+                        class="w-full sm:w-auto mx-auto bg-[#A16F7D] text-white font-semibold px-12 py-4 rounded-full hover:bg-[#8D5F6B] transition-all shadow-lg flex items-center justify-center group active:scale-95"
+                    >
+                        <i data-lucide="heart" class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform"></i>
+                        Pledge My Vote
+                    </button>
+                    
+                    <p class="text-xs text-[#B8CED2] italic">Clicking "Pledge My Vote" will open a Mailchimp confirmation in a new tab.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-[#1A2E35] text-slate-400 py-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-16">
+            <div class="space-y-6">
+                <div class="font-bold text-2xl tracking-tight text-white">
+                    Tom<span class="text-[#3D707E] font-light">ForHeadBoy</span>
+                </div>
+                <p class="text-sm font-light leading-relaxed">
+                    Advocating for student wellbeing, modern facilities, and a collaborative school community.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="p-2 bg-slate-800/50 rounded-full hover:bg-[#3D707E] hover:text-white transition-all"><i data-lucide="instagram" class="w-4.5 h-4.5"></i></a>
+                    <a href="#" class="p-2 bg-slate-800/50 rounded-full hover:bg-[#3D707E] hover:text-white transition-all"><i data-lucide="twitter" class="w-4.5 h-4.5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
+                <ul class="space-y-3 text-sm font-light">
+                    <li><button onclick="scrollToSection('about')" class="hover:text-white transition-colors">Candidate Profile</button></li>
+                    <li><button onclick="scrollToSection('manifesto')" class="hover:text-white transition-colors">Manifesto & Policies</button></li>
+                    <li><button onclick="scrollToSection('experience')" class="hover:text-white transition-colors">Experience Portfolio</button></li>
+                    <li><button onclick="scrollToSection('pledge')" class="hover:text-white transition-colors">Join the Support List</button></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-6 uppercase tracking-widest text-xs">Contact Information</h4>
+                <ul class="space-y-5 text-sm font-light">
+                    <li class="flex items-start">
+                        <i data-lucide="mail" class="w-4.5 h-4.5 mr-3 text-[#3D707E] mt-0.5"></i>
+                        <span>tom.headboy.campaign@school.ac.uk</span>
+                    </li>
+                    <li class="text-xs italic mt-8 border-l border-slate-700 pl-4">
+                        "Please reach out with any questions or ideas for the school year. I'm here to listen."
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 mt-20 pt-8 border-t border-white/5 text-center text-[10px] uppercase tracking-widest opacity-30">
+            © 2026 Campaign for Tom [Last Name] • Authorized by Campaign Committee
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript for Functionality -->
+    <script>
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 2. Handle Scroll Effect for Sticky Navbar Transparency
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
+                nav.classList.remove('bg-transparent', 'py-6');
+            } else {
+                nav.classList.add('bg-transparent', 'py-6');
+                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
+            }
+        });
+
+        // 3. Mobile Menu Toggle Logic
+        let isMenuOpen = false;
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconX = document.getElementById('icon-x');
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                iconMenu.classList.remove('block');
+                iconMenu.classList.add('hidden');
+                iconX.classList.remove('hidden');
+                iconX.classList.add('block');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                iconX.classList.remove('block');
+                iconX.classList.add('hidden');
+                iconMenu.classList.remove('hidden');
+                iconMenu.classList.add('block');
+            }
+        }
+
+        // 4. Smooth Scroll to Sections
+        function scrollToSection(id) {
+            // Close mobile menu if it's open
+            if (isMenuOpen) {
+                toggleMenu();
+            }
+            // Scroll to the element
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
